@@ -9,7 +9,7 @@ import {
 } from 'discord.js';
 import { Command } from '../interfaces/Command';
 import { Event } from '../interfaces/Event';
-import { Config } from '../interfaces/config';
+import { Config } from '../interfaces/Config';
 import glob from 'glob';
 import { promisify } from 'util';
 
@@ -48,6 +48,12 @@ class Bot extends Client {
 		});
 		console.log(commandFiles);
 		console.log(eventFiles);
+	}
+	public embed(options: MessageEmbedOptions, message: Message): MessageEmbed {
+		return new MessageEmbed({ ...options, color: 'RANDOM' }).setFooter(
+			`${message.author.tag} | ${this.user.username}`,
+			message.author.displayAvatarURL({ format: 'png', dynamic: true })
+		);
 	}
 }
 
