@@ -15,7 +15,9 @@ export const run: RunFunction = async (client, message: Message) => {
 	if (message.content.startsWith('!verse')) {
 		var url: string = 'https://www.biblegateway.com/';
 
-		message.channel.send(await verseScrapper(url));
+		verseScrapper(url);
+
+		await message.channel.send('Daily');
 	}
 
 	const args: string[] = message.content.slice('!'.length).trim().split(/ +/g);

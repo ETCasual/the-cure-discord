@@ -1,14 +1,14 @@
 import axios from 'axios';
 import cheerio, { Cheerio } from 'cheerio';
+import { VoiceBroadcast } from 'discord.js';
 
 interface Votd {
 	verseTitle: string;
 	verseVersion: string;
 	versePassage: string;
 }
-const votd: Votd[] = [];
 
-export const verseScrapper = async (url: string): Promise<Votd[]> => {
+export const verseScrapper = (url: string): void => {
 	const AxiosInstance = axios.create();
 	AxiosInstance.get(url)
 		.then(
@@ -18,6 +18,7 @@ export const verseScrapper = async (url: string): Promise<Votd[]> => {
 				const $ = cheerio.load(html);
 				const dailyVerse: Cheerio = $('.passage-box');
 				console.log(dailyVerse);
+				const votd: Votd[] = [];
 
 				dailyVerse.each((i, elem) => {
 					const verseTitle: string = $(elem)
@@ -34,13 +35,10 @@ export const verseScrapper = async (url: string): Promise<Votd[]> => {
 						verseVersion,
 						versePassage,
 					});
-					// Here got
-					console.log('here: ' + votd);
 				});
+				console.log(votd);
+				return votd;
 			}
 		)
 		.catch(console.error); // Error handling
-	// Here no
-	console.log('no' + votd);
-	return votd;
 };
