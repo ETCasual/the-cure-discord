@@ -63,6 +63,8 @@
     }
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.6",
     "consola": "^2.15.3",
     "discord.js": "^12.5.3",
     "glob": "^7.1.6"
