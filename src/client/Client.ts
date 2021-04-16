@@ -51,7 +51,7 @@ class Bot extends Client {
 		console.log(eventFiles);
 	}
 	public embed(options: MessageEmbedOptions, message: Message): MessageEmbed {
-		return new MessageEmbed({ ...options, color: 'RANDOM' }).setFooter(
+		return new MessageEmbed({ ...options, color: '#800080' }).setFooter(
 			`${message.author.tag} | ${this.user.username}`,
 			message.author.displayAvatarURL({ format: 'png', dynamic: true })
 		);

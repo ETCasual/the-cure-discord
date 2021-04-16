@@ -45,6 +45,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cheerio", "npm:1.0.0-rc.6"],
             ["consola", "npm:2.15.3"],
             ["discord.js", "npm:12.5.3"],
+            ["dotenv", "npm:8.2.0"],
             ["glob", "npm:7.1.6"],
             ["husky", "npm:6.0.0"],
             ["lint-staged", "npm:10.5.4"],
@@ -1254,6 +1255,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["dotenv", [
+        ["npm:8.2.0", {
+          "packageLocation": "./.yarn/cache/dotenv-npm-8.2.0-6b21df4d37-16cb89cbd7.zip/node_modules/dotenv/",
+          "packageDependencies": [
+            ["dotenv", "npm:8.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["dynamic-dedupe", [
         ["npm:0.3.0", {
           "packageLocation": "./.yarn/cache/dynamic-dedupe-npm-0.3.0-2bd097ed43-7fe0adbc2d.zip/node_modules/dynamic-dedupe/",
@@ -2100,6 +2110,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cheerio", "npm:1.0.0-rc.6"],
             ["consola", "npm:2.15.3"],
             ["discord.js", "npm:12.5.3"],
+            ["dotenv", "npm:8.2.0"],
             ["glob", "npm:7.1.6"],
             ["husky", "npm:6.0.0"],
             ["lint-staged", "npm:10.5.4"],

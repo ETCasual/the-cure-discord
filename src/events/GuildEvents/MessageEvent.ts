@@ -14,24 +14,25 @@ export const run: RunFunction = async (client, message: Message) => {
 	// Test
 	if (message.content.startsWith('!verse')) {
 		var url: string = 'https://www.biblegateway.com/';
-
-		verseScrapper(url);
-
-		await message.channel.send('Daily');
+		verseScrapper(client, message, url);
 	}
 
 	const args: string[] = message.content.slice('!'.length).trim().split(/ +/g);
 	const cmd: string = args.shift();
+	// Hits
 	console.log(cmd);
 
 	const command: Command = client.commands.get(cmd);
 	if (!command) return;
+	// Does not hit
+	console.log(command);
 	command
 		.run(client, message, args)
-		.catch((reason: any) =>
-			message.channel.send(
-				client.embed({ description: `An Error came: ${reason}` }, message)
-			)
+		.catch(
+			async (reason: any) =>
+				await message.channel.send(
+					client.embed({ description: `An Error came: ${reason}` }, message)
+				)
 		);
 };
 
