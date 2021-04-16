@@ -37,6 +37,7 @@ class Bot extends Client {
 		commandFiles.map(async (value: string) => {
 			const file: Command = await import(value);
 			this.commands.set(file.name, file);
+			console.log(file);
 		});
 		const eventFiles: string[] = await globPromise(
 			`${__dirname}/../events/**/*{.ts,.js}`
