@@ -4,7 +4,7 @@
 	"description": "",
 	"engines": {
 		"node": "14.x",
-		"yarn": "*"
+		"npm": "*"
 	},
 	"main": "index.js",
 	"scripts": {
@@ -13,7 +13,8 @@
 		"clean": "rimraf ./dist",
 		"build": "yarn clean && yarn tsc",
 		"start": "yarn build && node dist/index.js",
-		"tsc": "tsc"
+		"tsc": "tsc",
+		"postinstall": "npm run tsc"
 	},
 	"keywords": [],
 	"author": "",
