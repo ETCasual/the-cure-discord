@@ -11,8 +11,8 @@
 		"test": "ts-node-dev --respawn --transpile-only --poll ./src/index.ts",
 		"lint": "prettier --write .",
 		"clean": "rimraf ./dist",
-		"build": "yarn clean && yarn tsc",
-		"start": "yarn build && node dist/index.js",
+		"build": "npm run clean && npm run tsc",
+		"start": "npm run build && node dist/index.js",
 		"tsc": "tsc",
 		"postinstall": "npm run tsc"
 	},
