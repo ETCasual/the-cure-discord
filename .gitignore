@@ -8,3 +8,4 @@ dist
 !.yarn/versions
 .env
 .vercel
+node_modules/

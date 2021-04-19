@@ -11,8 +11,9 @@
 		"test": "ts-node-dev --respawn --transpile-only --poll ./src/index.ts",
 		"lint": "prettier --write .",
 		"clean": "rimraf ./dist",
-		"build": "yarn clean && tsc",
-		"start": "yarn build && node dist/index.js"
+		"build": "yarn clean && yarn tsc",
+		"start": "yarn build && node dist/index.js",
+		"tsc": "tsc"
 	},
 	"keywords": [],
 	"author": "",
