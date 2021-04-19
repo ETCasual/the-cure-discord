@@ -41,6 +41,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@commitlint/config-angular", "npm:12.1.1"],
             ["@types/glob", "npm:7.1.3"],
             ["@types/node", "npm:14.14.37"],
+            ["@types/rimraf", "npm:3.0.0"],
             ["axios", "npm:0.21.1"],
             ["cheerio", "npm:1.0.0-rc.6"],
             ["consola", "npm:2.15.3"],
@@ -51,6 +52,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lint-staged", "npm:10.5.4"],
             ["nodemon", "npm:2.0.7"],
             ["prettier", "npm:2.2.1"],
+            ["rimraf", "npm:3.0.2"],
             ["ts-node", "virtual:cb05b0b8d4b8bade4748fd6c438364149327c64fd07638ffe4f90d20bc7c5ca504a19e7c34d30bf0ca3582d5de8b87be6ceab3973cd2bf9846cbdf9e29f29445#npm:9.1.1"],
             ["ts-node-dev", "virtual:cb05b0b8d4b8bade4748fd6c438364149327c64fd07638ffe4f90d20bc7c5ca504a19e7c34d30bf0ca3582d5de8b87be6ceab3973cd2bf9846cbdf9e29f29445#npm:1.1.6"],
             ["typescript", "patch:typescript@npm%3A4.2.4#builtin<compat/typescript>::version=4.2.4&hash=a45b0e"]
@@ -418,6 +420,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-responselike-npm-1.0.0-85dd08af42-e6e6613c80.zip/node_modules/@types/responselike/",
           "packageDependencies": [
             ["@types/responselike", "npm:1.0.0"],
+            ["@types/node", "npm:14.14.37"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/rimraf", [
+        ["npm:3.0.0", {
+          "packageLocation": "./.yarn/cache/@types-rimraf-npm-3.0.0-8a09fb283d-00a00a430f.zip/node_modules/@types/rimraf/",
+          "packageDependencies": [
+            ["@types/rimraf", "npm:3.0.0"],
+            ["@types/glob", "npm:7.1.3"],
             ["@types/node", "npm:14.14.37"]
           ],
           "linkType": "HARD",
@@ -2506,6 +2519,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@commitlint/config-angular", "npm:12.1.1"],
             ["@types/glob", "npm:7.1.3"],
             ["@types/node", "npm:14.14.37"],
+            ["@types/rimraf", "npm:3.0.0"],
             ["axios", "npm:0.21.1"],
             ["cheerio", "npm:1.0.0-rc.6"],
             ["consola", "npm:2.15.3"],
@@ -2516,6 +2530,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lint-staged", "npm:10.5.4"],
             ["nodemon", "npm:2.0.7"],
             ["prettier", "npm:2.2.1"],
+            ["rimraf", "npm:3.0.2"],
             ["ts-node", "virtual:cb05b0b8d4b8bade4748fd6c438364149327c64fd07638ffe4f90d20bc7c5ca504a19e7c34d30bf0ca3582d5de8b87be6ceab3973cd2bf9846cbdf9e29f29445#npm:9.1.1"],
             ["ts-node-dev", "virtual:cb05b0b8d4b8bade4748fd6c438364149327c64fd07638ffe4f90d20bc7c5ca504a19e7c34d30bf0ca3582d5de8b87be6ceab3973cd2bf9846cbdf9e29f29445#npm:1.1.6"],
             ["typescript", "patch:typescript@npm%3A4.2.4#builtin<compat/typescript>::version=4.2.4&hash=a45b0e"]
