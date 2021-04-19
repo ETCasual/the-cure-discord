@@ -4,7 +4,7 @@
 	"description": "",
 	"engines": {
 		"node": "14.x",
-		"npm": "*"
+		"yarn": "*"
 	},
 	"main": "index.js",
 	"scripts": {
