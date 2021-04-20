@@ -1,5 +1,6 @@
 import { Message, MessageAttachment } from 'discord.js';
 import { RunFunction } from '../../interfaces/Command';
+// import { channelToSendRank } from './BindCommand';
 
 const leveling = require('discord-leveling');
 const canvacord = require('canvacord');

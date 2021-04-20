@@ -1,24 +1,31 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.name = exports.run = void 0;
 const discord_js_1 = require("discord.js");
 const verseScrapper_1 = require("../../api/verseScrapper");
+const fs_1 = __importDefault(require("fs"));
 const leveling = require('discord-leveling');
 const canvacord = require('canvacord');
 const run = async (client, message) => {
     //When someone sends a message add xp
-    if (!message.content.toLowerCase().startsWith('!') && !message.author.bot) {
+    if (!message.content.toLowerCase().startsWith('-') && !message.author.bot) {
         var profile = await leveling.Fetch(message.author.id);
         if (profile.level == 0) {
             leveling.SetLevel(message.author.id, 1);
             leveling.SetXp(message.author.id, 0);
         }
-        leveling.AddXp(message.author.id, 5);
+        leveling.AddXp(message.author.id, 100);
         //If user xp higher than 100 add level
-        if (profile.xp + 5 > 100) {
+        if (profile.xp + 100 > 100) {
             await leveling.AddLevel(message.author.id, 1);
             await leveling.SetXp(message.author.id, 0);
             if ((profile.xp = 100)) {
+                const channelRankId = fs_1.default.readFileSync('channel.txt', 'utf-8');
+                console.log(channelRankId);
+                const channelToSendRank = message.guild.channels.cache.find((i) => i.id === channelRankId);
                 // console.log(profile.xp);
                 const card = new canvacord.Rank()
                     .setUsername(message.author.username)
@@ -34,21 +41,22 @@ const run = async (client, message) => {
                     .setStatus(message.author.presence.status)
                     .setAvatar(message.author.displayAvatarURL({ format: 'png', size: 1024 }));
                 const img = await card.build();
-                message.channel.send(`Congratulations! ${message.author.toString()}, You Are now Level ${profile.level + 1}!!`);
-                message.channel.send(new discord_js_1.MessageAttachment(img, 'rank.png'));
+                console.log(channelToSendRank.id);
+                channelToSendRank.send(`Congratulations! ${message.author.toString()}, You Are now Level ${profile.level + 1}!!`);
+                channelToSendRank.send(new discord_js_1.MessageAttachment(img, 'rank.png'));
             }
         }
     }
     if (message.author.bot ||
         !message.guild ||
-        !message.content.toLowerCase().startsWith('!'))
+        !message.content.toLowerCase().startsWith('-'))
         return;
     // verseScrapper
-    if (message.content.startsWith('!verse')) {
+    if (message.content.startsWith('-verse')) {
         var url = 'https://www.biblegateway.com/';
         verseScrapper_1.verseScrapper(client, message, url);
     }
-    const args = message.content.slice('!'.length).trim().split(/ +/g);
+    const args = message.content.slice('-'.length).trim().split(/ +/g);
     // console.log('args: ' + args);
     const cmd = args.shift();
     // console.log('cmd: ' + cmd);

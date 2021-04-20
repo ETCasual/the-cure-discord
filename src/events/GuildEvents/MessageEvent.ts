@@ -1,25 +1,31 @@
 import { RunFunction } from '../../interfaces/Event';
-import { Message, MessageAttachment } from 'discord.js';
+import { Message, MessageAttachment, TextChannel } from 'discord.js';
 import { Command } from '../../interfaces/Command';
 import { verseScrapper } from '../../api/verseScrapper';
+import fs from 'fs';
 
 const leveling = require('discord-leveling');
 const canvacord = require('canvacord');
 
 export const run: RunFunction = async (client, message: Message) => {
 	//When someone sends a message add xp
-	if (!message.content.toLowerCase().startsWith('!') && !message.author.bot) {
+	if (!message.content.toLowerCase().startsWith('-') && !message.author.bot) {
 		var profile = await leveling.Fetch(message.author.id);
 		if (profile.level == 0) {
 			leveling.SetLevel(message.author.id, 1);
 			leveling.SetXp(message.author.id, 0);
 		}
-		leveling.AddXp(message.author.id, 5);
+		leveling.AddXp(message.author.id, 100);
 		//If user xp higher than 100 add level
-		if (profile.xp + 5 > 100) {
+		if (profile.xp + 100 > 100) {
 			await leveling.AddLevel(message.author.id, 1);
 			await leveling.SetXp(message.author.id, 0);
 			if ((profile.xp = 100)) {
+				const channelRankId: string = fs.readFileSync('channel.txt', 'utf-8');
+				console.log(channelRankId);
+				const channelToSendRank = message.guild.channels.cache.find(
+					(i) => i.id === channelRankId
+				) as TextChannel;
 				// console.log(profile.xp);
 				const card = new canvacord.Rank()
 					.setUsername(message.author.username)
@@ -38,29 +44,30 @@ export const run: RunFunction = async (client, message: Message) => {
 					);
 
 				const img = await card.build();
-				message.channel.send(
+				console.log(channelToSendRank.id);
+				channelToSendRank.send(
 					`Congratulations! ${message.author.toString()}, You Are now Level ${
 						profile.level + 1
 					}!!`
 				);
-				message.channel.send(new MessageAttachment(img, 'rank.png'));
+				channelToSendRank.send(new MessageAttachment(img, 'rank.png'));
 			}
 		}
 	}
 	if (
 		message.author.bot ||
 		!message.guild ||
-		!message.content.toLowerCase().startsWith('!')
+		!message.content.toLowerCase().startsWith('-')
 	)
 		return;
 
 	// verseScrapper
-	if (message.content.startsWith('!verse')) {
+	if (message.content.startsWith('-verse')) {
 		var url: string = 'https://www.biblegateway.com/';
 		verseScrapper(client, message, url);
 	}
 
-	const args: string[] = message.content.slice('!'.length).trim().split(/ +/g);
+	const args: string[] = message.content.slice('-'.length).trim().split(/ +/g);
 
 	// console.log('args: ' + args);
 	const cmd: string = args.shift();

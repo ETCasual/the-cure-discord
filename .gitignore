@@ -9,3 +9,4 @@
 .vercel
 node_modules/
 database.sqlite
+channel.txt

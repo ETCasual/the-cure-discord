@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.name = exports.run = void 0;
 const discord_js_1 = require("discord.js");
+// import { channelToSendRank } from './BindCommand';
 const leveling = require('discord-leveling');
 const canvacord = require('canvacord');
 const run = async (client, message) => {
