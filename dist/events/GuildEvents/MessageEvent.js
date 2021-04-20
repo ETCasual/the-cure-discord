@@ -5,13 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.name = exports.run = void 0;
 const discord_js_1 = require("discord.js");
-const verseScrapper_1 = require("../../api/verseScrapper");
 const fs_1 = __importDefault(require("fs"));
 const leveling = require('discord-leveling');
 const canvacord = require('canvacord');
 const run = async (client, message) => {
     //When someone sends a message add xp
-    if (!message.content.toLowerCase().startsWith('-') && !message.author.bot) {
+    if (!message.content.toLowerCase().startsWith('!') && !message.author.bot) {
         var profile = await leveling.Fetch(message.author.id);
         if (profile.level == 0) {
             leveling.SetLevel(message.author.id, 1);
@@ -49,14 +48,9 @@ const run = async (client, message) => {
     }
     if (message.author.bot ||
         !message.guild ||
-        !message.content.toLowerCase().startsWith('-'))
+        !message.content.toLowerCase().startsWith('!'))
         return;
-    // verseScrapper
-    if (message.content.startsWith('-verse')) {
-        var url = 'https://www.biblegateway.com/';
-        verseScrapper_1.verseScrapper(client, message, url);
-    }
-    const args = message.content.slice('-'.length).trim().split(/ +/g);
+    const args = message.content.slice('!'.length).trim().split(/ +/g);
     // console.log('args: ' + args);
     const cmd = args.shift();
     // console.log('cmd: ' + cmd);

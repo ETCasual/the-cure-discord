@@ -1,7 +1,6 @@
 import { RunFunction } from '../../interfaces/Event';
 import { Message, MessageAttachment, TextChannel } from 'discord.js';
 import { Command } from '../../interfaces/Command';
-import { verseScrapper } from '../../api/verseScrapper';
 import fs from 'fs';
 
 const leveling = require('discord-leveling');
@@ -9,7 +8,7 @@ const canvacord = require('canvacord');
 
 export const run: RunFunction = async (client, message: Message) => {
 	//When someone sends a message add xp
-	if (!message.content.toLowerCase().startsWith('-') && !message.author.bot) {
+	if (!message.content.toLowerCase().startsWith('!') && !message.author.bot) {
 		var profile = await leveling.Fetch(message.author.id);
 		if (profile.level == 0) {
 			leveling.SetLevel(message.author.id, 1);
@@ -57,17 +56,11 @@ export const run: RunFunction = async (client, message: Message) => {
 	if (
 		message.author.bot ||
 		!message.guild ||
-		!message.content.toLowerCase().startsWith('-')
+		!message.content.toLowerCase().startsWith('!')
 	)
 		return;
 
-	// verseScrapper
-	if (message.content.startsWith('-verse')) {
-		var url: string = 'https://www.biblegateway.com/';
-		verseScrapper(client, message, url);
-	}
-
-	const args: string[] = message.content.slice('-'.length).trim().split(/ +/g);
+	const args: string[] = message.content.slice('!'.length).trim().split(/ +/g);
 
 	// console.log('args: ' + args);
 	const cmd: string = args.shift();
