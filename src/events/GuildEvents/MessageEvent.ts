@@ -1,9 +1,48 @@
 import { RunFunction } from '../../interfaces/Event';
-import { ClientUser, Message } from 'discord.js';
+import { Message, MessageAttachment } from 'discord.js';
 import { Command } from '../../interfaces/Command';
 import { verseScrapper } from '../../api/verseScrapper';
 
+const leveling = require('discord-leveling');
+const canvacord = require('canvacord');
+
 export const run: RunFunction = async (client, message: Message) => {
+	//When someone sends a message add xp
+	if (!message.content.toLowerCase().startsWith('!') || !message.author.bot) {
+		var profile = await leveling.Fetch(message.author.id);
+		leveling.AddXp(message.author.id, 10);
+		//If user xp higher than 100 add level
+		if (profile.xp + 10 > 100) {
+			await leveling.AddLevel(message.author.id, 1);
+			await leveling.SetXp(message.author.id, 0);
+			if ((profile.xp = 10)) {
+				// console.log(profile.xp);
+				const card = new canvacord.Rank()
+					.setUsername(message.author.username)
+					.setDiscriminator(message.author.discriminator)
+					.setRank(profile.xp, 'placeholder', false)
+					.setLevel(profile.level)
+					.setCurrentXP(profile.xp)
+					.setRequiredXP(100)
+					.renderEmojis(true)
+					.setBackground('COLOR', '#ff865c')
+					.setOverlay('#323150', 1, true)
+					.setProgressBar(['#9f3763', '#ff865c'], 'GRADIENT', true)
+					.setStatus(message.author.presence.status)
+					.setAvatar(
+						message.author.displayAvatarURL({ format: 'png', size: 1024 })
+					);
+
+				const img = await card.build();
+				message.channel.send(
+					`Congratulations! ${message.author.toString()}, You Are now Level ${
+						profile.level
+					}!!`
+				);
+				message.channel.send(new MessageAttachment(img, 'rank.png'));
+			}
+		}
+	}
 	if (
 		message.author.bot ||
 		!message.guild ||
