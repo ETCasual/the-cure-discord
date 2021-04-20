@@ -9,12 +9,12 @@ const run = async (client, message) => {
     //When someone sends a message add xp
     if (!message.content.toLowerCase().startsWith('!') || !message.author.bot) {
         var profile = await leveling.Fetch(message.author.id);
-        leveling.AddXp(message.author.id, 10);
+        leveling.AddXp(message.author.id, 5);
         //If user xp higher than 100 add level
-        if (profile.xp + 10 > 100) {
+        if (profile.xp + 5 > 100) {
             await leveling.AddLevel(message.author.id, 1);
             await leveling.SetXp(message.author.id, 0);
-            if ((profile.xp = 10)) {
+            if ((profile.xp = 5)) {
                 // console.log(profile.xp);
                 const card = new canvacord.Rank()
                     .setUsername(message.author.username)
