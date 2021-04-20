@@ -10,6 +10,9 @@ export const run: RunFunction = async (client, message: Message) => {
 	//When someone sends a message add xp
 	if (!message.content.toLowerCase().startsWith('!') && !message.author.bot) {
 		var profile = await leveling.Fetch(message.author.id);
+		if (profile.level == 1) {
+			leveling.SetLevel(message.author.id, 1);
+		}
 		leveling.AddXp(message.author.id, 5);
 		//If user xp higher than 100 add level
 		if (profile.xp + 5 > 100) {
