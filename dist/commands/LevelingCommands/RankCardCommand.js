@@ -10,7 +10,7 @@ const run = async (client, message) => {
         .setUsername(message.author.username)
         .setDiscriminator(message.author.discriminator)
         .setRank(profile.xp, 'placeholder', false)
-        .setLevel(profile.level)
+        .setLevel(profile.xp === 100 ? profile.level + 1 : profile.level)
         .setCurrentXP(profile.xp)
         .setRequiredXP(100)
         .renderEmojis(true)

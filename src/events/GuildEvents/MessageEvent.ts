@@ -10,8 +10,9 @@ export const run: RunFunction = async (client, message: Message) => {
 	//When someone sends a message add xp
 	if (!message.content.toLowerCase().startsWith('!') && !message.author.bot) {
 		var profile = await leveling.Fetch(message.author.id);
-		if (profile.level == 1) {
+		if (profile.level == 0) {
 			leveling.SetLevel(message.author.id, 1);
+			leveling.SetXp(message.author.id, 0);
 		}
 		leveling.AddXp(message.author.id, 5);
 		//If user xp higher than 100 add level
@@ -24,7 +25,7 @@ export const run: RunFunction = async (client, message: Message) => {
 					.setUsername(message.author.username)
 					.setDiscriminator(message.author.discriminator)
 					.setRank(profile.xp, 'placeholder', false)
-					.setLevel(profile.level)
+					.setLevel(profile.level + 1)
 					.setCurrentXP(profile.xp)
 					.setRequiredXP(100)
 					.renderEmojis(true)
@@ -39,7 +40,7 @@ export const run: RunFunction = async (client, message: Message) => {
 				const img = await card.build();
 				message.channel.send(
 					`Congratulations! ${message.author.toString()}, You Are now Level ${
-						profile.level
+						profile.level + 1
 					}!!`
 				);
 				message.channel.send(new MessageAttachment(img, 'rank.png'));

@@ -9,8 +9,9 @@ const run = async (client, message) => {
     //When someone sends a message add xp
     if (!message.content.toLowerCase().startsWith('!') && !message.author.bot) {
         var profile = await leveling.Fetch(message.author.id);
-        if (profile.level == 1) {
+        if (profile.level == 0) {
             leveling.SetLevel(message.author.id, 1);
+            leveling.SetXp(message.author.id, 0);
         }
         leveling.AddXp(message.author.id, 5);
         //If user xp higher than 100 add level
@@ -23,7 +24,7 @@ const run = async (client, message) => {
                     .setUsername(message.author.username)
                     .setDiscriminator(message.author.discriminator)
                     .setRank(profile.xp, 'placeholder', false)
-                    .setLevel(profile.level)
+                    .setLevel(profile.level + 1)
                     .setCurrentXP(profile.xp)
                     .setRequiredXP(100)
                     .renderEmojis(true)
@@ -33,7 +34,7 @@ const run = async (client, message) => {
                     .setStatus(message.author.presence.status)
                     .setAvatar(message.author.displayAvatarURL({ format: 'png', size: 1024 }));
                 const img = await card.build();
-                message.channel.send(`Congratulations! ${message.author.toString()}, You Are now Level ${profile.level}!!`);
+                message.channel.send(`Congratulations! ${message.author.toString()}, You Are now Level ${profile.level + 1}!!`);
                 message.channel.send(new discord_js_1.MessageAttachment(img, 'rank.png'));
             }
         }
