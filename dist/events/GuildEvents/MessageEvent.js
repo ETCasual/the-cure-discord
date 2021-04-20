@@ -16,9 +16,9 @@ const run = async (client, message) => {
             leveling.SetLevel(message.author.id, 1);
             leveling.SetXp(message.author.id, 0);
         }
-        leveling.AddXp(message.author.id, 100);
+        leveling.AddXp(message.author.id, 5);
         //If user xp higher than 100 add level
-        if (profile.xp + 100 > 100) {
+        if (profile.xp + 5 > 100) {
             await leveling.AddLevel(message.author.id, 1);
             await leveling.SetXp(message.author.id, 0);
             if ((profile.xp = 100)) {
