@@ -5,6 +5,29 @@ import fs from 'fs';
 
 const leveling = require('discord-leveling');
 const canvacord = require('canvacord');
+const readline = require('readline');
+
+var channelRank: string;
+var channelRankId: string;
+var guildId: string;
+
+async function processLineByLine(fileName: string, message: Message) {
+	const fileStream = fs.createReadStream(fileName);
+
+	const rl = readline.createInterface({
+		input: fileStream,
+		crlfDelay: Infinity,
+	});
+
+	for await (const line of rl) {
+		if (line.startsWith(message.guild.id)) {
+			channelRank = line;
+			channelRank.split('_');
+			channelRankId = channelRank[1];
+			guildId = channelRank[0];
+		}
+	}
+}
 
 export const run: RunFunction = async (client, message: Message) => {
 	//When someone sends a message add xp
@@ -20,8 +43,10 @@ export const run: RunFunction = async (client, message: Message) => {
 			await leveling.AddLevel(message.author.id, 1);
 			await leveling.SetXp(message.author.id, 0);
 			if ((profile.xp = 100)) {
-				const channelRankId: string = fs.readFileSync('channel.txt', 'utf-8');
-				console.log(channelRankId);
+				processLineByLine('channel.txt', message);
+				// TODO: Add function for iteration to read each guild and channel id
+
+				console.log(`guild id: ${guildId}, channel id: ${channelRankId}`);
 				const channelToSendRank = message.guild.channels.cache.find(
 					(i) => i.id === channelRankId
 				) as TextChannel;

@@ -5,10 +5,19 @@ import fs from 'fs';
 export const run: RunFunction = async (client, message: Message) => {
 	var file: string = fs.readFileSync('channel.txt', 'utf-8');
 	if (file === '' || file !== message.channel.id) {
-		fs.writeFile('channel.txt', message.channel.id, (err) => {
-			if (err) throw err;
-			console.log('Channel Id is saved: ' + message.channel.id);
-		});
+		fs.writeFile(
+			'channel.txt',
+			message.guild.id + '_' + message.channel.id,
+			(err) => {
+				if (err) throw err;
+				console.log(
+					'Channel Id is saved: ' +
+						message.channel.id +
+						', with guild specific: ' +
+						message.guild.id
+				);
+			}
+		);
 		file = fs.readFileSync('channel.txt', 'utf-8');
 	} else return;
 
