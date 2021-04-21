@@ -7,7 +7,7 @@ export const run: RunFunction = async (client, message: Message) => {
 	if (file === '' || file !== message.channel.id) {
 		fs.writeFile(
 			'channel.txt',
-			message.guild.id + '_' + message.channel.id,
+			message.guild.id + '_' + message.channel.id + '\n',
 			(err) => {
 				if (err) throw err;
 				console.log(

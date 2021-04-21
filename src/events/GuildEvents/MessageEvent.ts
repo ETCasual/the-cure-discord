@@ -10,6 +10,7 @@ const readline = require('readline');
 var channelRank: string;
 var channelRankId: string;
 var guildId: string;
+// var currentGuild: string;
 
 async function processLineByLine(fileName: string, message: Message) {
 	const fileStream = fs.createReadStream(fileName);
@@ -30,6 +31,7 @@ async function processLineByLine(fileName: string, message: Message) {
 }
 
 export const run: RunFunction = async (client, message: Message) => {
+	// currentGuild = message.guild.id
 	//When someone sends a message add xp
 	if (!message.content.toLowerCase().startsWith('!') && !message.author.bot) {
 		var profile = await leveling.Fetch(message.author.id);
