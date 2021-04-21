@@ -8,7 +8,7 @@ const fs_1 = __importDefault(require("fs"));
 const run = async (client, message) => {
     var file = fs_1.default.readFileSync('channel.txt', 'utf-8');
     if (file === '' || file !== message.channel.id) {
-        fs_1.default.writeFile('channel.txt', message.guild.id + '_' + message.channel.id + '\n', (err) => {
+        fs_1.default.appendFile('channel.txt', message.guild.id + '_' + message.channel.id + '\n', (err) => {
             if (err)
                 throw err;
             console.log('Channel Id is saved: ' +

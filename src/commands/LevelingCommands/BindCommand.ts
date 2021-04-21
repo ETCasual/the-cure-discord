@@ -5,7 +5,7 @@ import fs from 'fs';
 export const run: RunFunction = async (client, message: Message) => {
 	var file: string = fs.readFileSync('channel.txt', 'utf-8');
 	if (file === '' || file !== message.channel.id) {
-		fs.writeFile(
+		fs.appendFile(
 			'channel.txt',
 			message.guild.id + '_' + message.channel.id + '\n',
 			(err) => {
