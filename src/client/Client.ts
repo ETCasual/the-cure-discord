@@ -20,7 +20,7 @@ const globPromise = promisify(glob);
 
 const getTime = async (url) => {
 	try {
-		const res = await fetch(url);
+		const res = await fetch(`http://worldtimeapi.org/api/timezone/${url}`);
 		const data = await res.json();
 		const time = moment.tz(data.datetime, data.timezone).format('hh:mm A');
 		return time;
@@ -29,11 +29,11 @@ const getTime = async (url) => {
 	}
 };
 const timeMap = {
-	KUL: 'http://worldtimeapi.org/api/timezone/Asia/Kuala_Lumpur',
-	LONDON: 'http://worldtimeapi.org/api/timezone/Europe/London',
-	MELBOURNE: 'http://worldtimeapi.org/api/timezone/Australia/Melbourne',
-	DARWIN: 'http://worldtimeapi.org/api/timezone/Australia/Darwin',
-	PERTH: 'http://worldtimeapi.org/api/timezone/Australia/Perth',
+	KUL: 'Asia/Kuala_Lumpur',
+	LONDON: 'Europe/London',
+	MELBOURNE: 'Australia/Melbourne',
+	DARWIN: 'Australia/Darwin',
+	PERTH: 'Australia/Perth',
 };
 
 class Bot extends Client {
