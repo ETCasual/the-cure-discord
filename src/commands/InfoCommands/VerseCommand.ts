@@ -12,7 +12,7 @@ export const run: RunFunction = async (client, message) => {
 				const html = response.data; // Get the HTML from the HTTP request
 				const $ = cheerio.load(html);
 				const dailyVerse: Cheerio = $('.passage-box');
-				console.log(dailyVerse);
+				// console.log(dailyVerse);
 
 				dailyVerse.each(async (i, elem) => {
 					const verseTitle: string = $(elem)

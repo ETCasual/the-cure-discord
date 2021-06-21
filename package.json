@@ -10,7 +10,7 @@
 	"scripts": {
 		"test": "ts-node-dev --respawn --transpile-only --poll ./src/index.ts",
 		"lint": "prettier --write .",
-		"clean": "rimraf ./dist channel.txt",
+		"clean": "rimraf ./dist bindedRankChannels.json",
 		"start": "node dist/index.js"
 	},
 	"keywords": [],
@@ -77,6 +77,7 @@
 		"discord.js": "^12.5.3",
 		"dotenv": "^8.2.0",
 		"glob": "^7.1.6",
+		"moment-timezone": "^0.5.33",
 		"nodemon": "^2.0.7",
 		"rimraf": "^3.0.2"
 	}

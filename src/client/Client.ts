@@ -13,7 +13,28 @@ import { Config } from '../interfaces/Config';
 import glob from 'glob';
 import { promisify } from 'util';
 
+const fetch = require('node-fetch'); // Api fetch() function
+const moment = require('moment-timezone');
+
 const globPromise = promisify(glob);
+
+const getTime = async (url) => {
+	try {
+		const res = await fetch(url);
+		const data = await res.json();
+		const time = moment.tz(data.datetime, data.timezone).format('hh:mm A');
+		return time;
+	} catch (err) {
+		console.error('API Err: ' + err);
+	}
+};
+const timeMap = {
+	KUL: 'http://worldtimeapi.org/api/timezone/Asia/Kuala_Lumpur',
+	LONDON: 'http://worldtimeapi.org/api/timezone/Europe/London',
+	MELBOURNE: 'http://worldtimeapi.org/api/timezone/Australia/Melbourne',
+	DARWIN: 'http://worldtimeapi.org/api/timezone/Australia/Darwin',
+	PERTH: 'http://worldtimeapi.org/api/timezone/Australia/Perth',
+};
 
 class Bot extends Client {
 	public logger: Consola = consola;
@@ -48,8 +69,28 @@ class Bot extends Client {
 			this.on(file.name, file.run.bind(null, this));
 			console.log(file);
 		});
-		console.log(commandFiles);
-		console.log(eventFiles);
+		let index = 0;
+		setInterval(async () => {
+			const timezone = Object.keys(timeMap);
+
+			if (index === timezone.length) index = 0;
+			const url = timeMap[timezone[index]];
+			const time = await getTime(url);
+			try {
+				//   Setting the custom activity
+				if (this.user) {
+					await this.user.setActivity({
+						name: `${timezone[index].toString()}: ${time}`,
+					});
+				}
+			} catch (err) {
+				console.error('Discord Rate Err: ' + err);
+			}
+			// increase the index and loop again
+			index++;
+		}, 10000);
+		// console.log(commandFiles);
+		// console.log(eventFiles);
 	}
 	public embed(options: MessageEmbedOptions, message: Message): MessageEmbed {
 		return new MessageEmbed({ ...options, color: '#800080' }).setFooter(
