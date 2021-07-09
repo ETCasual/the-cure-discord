@@ -49,23 +49,28 @@ class Bot extends Client {
 			console.log(file);
 		});
 
-		try {
-			//   Setting the custom activity
-			if (this.user) {
-				await this.user.setActivity({
-					name: 'Researching for vaccine!',
-				});
+		setTimeout(async () => {
+			try {
+				//   Setting the custom activity
+				if (this.user) {
+					await this.user.setActivity({
+						name: 'Researching for vaccine!',
+					});
+				}
+			} catch (err) {
+				console.error('Discord Rate Err: ' + err);
 			}
-		} catch (err) {
-			console.error('Discord Rate Err: ' + err);
-		}
+		}, 2000);
 		// increase the index and loop again
 
 		// console.log(commandFiles);
 		// console.log(eventFiles);
 	}
+	public emptyEmbed(options: MessageEmbedOptions): MessageEmbed {
+		return new MessageEmbed({ ...options, color: '#abfa00' });
+	}
 	public embed(options: MessageEmbedOptions, message: Message): MessageEmbed {
-		return new MessageEmbed({ ...options, color: '#800080' }).setFooter(
+		return new MessageEmbed({ ...options, color: '#abfa00' }).setFooter(
 			`${message.author.tag} | ${this.user.username}`,
 			message.author.displayAvatarURL({ format: 'png', dynamic: true })
 		);

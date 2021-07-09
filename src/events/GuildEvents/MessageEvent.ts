@@ -10,7 +10,7 @@ import { Command } from '../../interfaces/Command';
 // var guildId: string;
 // var currentGuild: string;
 
-const prefix = '&';
+const prefix = '!';
 
 export const run: RunFunction = async (client, message: Message) => {
 	// //When someone sends a message add xp
