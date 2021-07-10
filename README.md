@@ -1,4 +1,4 @@
-# lgrdiscord
+# The Cure Discord Bot, created for CYC HEART TEAM Outreach
 
 Created with [create-ts-pro](https://github.com/Milo123459/create-ts-pro)
 
