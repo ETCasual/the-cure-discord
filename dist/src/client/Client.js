@@ -75,10 +75,10 @@ class Bot extends discord_js_1.Client {
         // console.log(eventFiles);
     }
     emptyEmbed(options) {
-        return new discord_js_1.MessageEmbed({ ...options, color: '#abfa00' });
+        return new discord_js_1.MessageEmbed({ ...options, color: '#ef1b1b' });
     }
     embed(options, message) {
-        return new discord_js_1.MessageEmbed({ ...options, color: '#abfa00' }).setFooter(`${message.author.tag} | ${this.user.username}`, message.author.displayAvatarURL({ format: 'png', dynamic: true }));
+        return new discord_js_1.MessageEmbed({ ...options, color: '#ef1b1b' }).setFooter(`${message.author.tag} | ${this.user.username}`, message.author.displayAvatarURL({ format: 'png', dynamic: true }));
     }
 }
 exports.Bot = Bot;
