@@ -67,10 +67,10 @@ class Bot extends Client {
 		// console.log(eventFiles);
 	}
 	public emptyEmbed(options: MessageEmbedOptions): MessageEmbed {
-		return new MessageEmbed({ ...options, color: '#abfa00' });
+		return new MessageEmbed({ ...options, color: '#ef1b1b' });
 	}
 	public embed(options: MessageEmbedOptions, message: Message): MessageEmbed {
-		return new MessageEmbed({ ...options, color: '#abfa00' }).setFooter(
+		return new MessageEmbed({ ...options, color: '#ef1b1b' }).setFooter(
 			`${message.author.tag} | ${this.user.username}`,
 			message.author.displayAvatarURL({ format: 'png', dynamic: true })
 		);
