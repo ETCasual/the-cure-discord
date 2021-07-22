@@ -99,6 +99,31 @@ export const run: RunFunction = async (client, message, args) => {
 				);
 			}
 			break;
+
+		case 'cases':
+			if (isOwner()) {
+				if (args[1] == '1') {
+					await announcementChannel.send(
+						'@everyone',
+						client.emptyEmbed({
+							title:
+								'Day [1] Log: Unknown Virus Emergence!\n日志 [1]: 发现全新病毒!',
+							description: '120 Cases Detected\n已有 120 个确证人数',
+						})
+					);
+				} else if (args[1] == '2') {
+					await announcementChannel.send(
+						'@everyone',
+						client.emptyEmbed({
+							title:
+								'Day [365] Log: 90% World Population Exterminated!\n日志 [365]: 全球90%人民已被病毒消灭!',
+							description:
+								'The remaining survivors must work together to fend for themselves and cultivate THE CURE to combat the virus\n剩下的人民必须同心协力 保护自己 并且研究出解药以 拯救全人类',
+						})
+					);
+				}
+			}
+			break;
 		default:
 			console.log('No args is passed, stopping command');
 			break;
