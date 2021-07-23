@@ -28,12 +28,13 @@ const run = async (client, message, args) => {
     const rulesChannel = client.channels.cache.get('863048882300387338');
     // TODO: Add URL
     switch (args[0]) {
-        case 'game1':
+        case 'kahoot':
             if (isOwner()) {
-                await announcementChannel.send(client.emptyEmbed({
-                    title: 'Test of Sight!',
-                    description: `1. Click The Title Text!\n2. Find **5 hidden words** from each image in the website!\n3. Submit your screenshots in your group's submission channel!`,
-                    url: '',
+                await announcementChannel.send('@everyone', client.emptyEmbed({
+                    title: 'Kahoot It!',
+                    description: `1. Click The Title Text!\n2. Enter into **Kahoot!** and answer all questions!\n
+						1. 点击标题文以展开我们的网页!\n2. 进入 **Kahoot!** 游戏 并且回答所有问题!\n\nNote: This is a group effort game, use your group names! ie: The Cure 1\n温馨提醒: 这是一个团队游戏, 请使用团队的名字! 例如: The Cure 1\n\nOnly 1 submission per group allowed. Do Not Attempt To Cheat! 😉\n一个组只能提交一次, 别作弊哦! 😉`,
+                    url: 'https://thecure-web.vercel.app',
                 }));
             }
             // .then((msg) => {
