@@ -134,6 +134,8 @@ export const run: RunFunction = async (client, message, args) => {
 			}
 			break;
 		default:
+			console.log('args0: ' + args[0]);
+			console.log('args1: ' + args[1]);
 			console.log('No args is passed, stopping command');
 			break;
 	}
