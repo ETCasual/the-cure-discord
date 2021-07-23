@@ -43,7 +43,7 @@ const run = async (client, message, args) => {
             break;
         case 'zoom':
             if (isOwner()) {
-                await message.channel.send('@everyone', client.emptyEmbed({
+                await announcementChannel.send('@everyone', client.emptyEmbed({
                     title: 'The Cure Research Emergency Meeting! 🚨',
                     description: 'The Cure Research Emergency Meeting has started! All Researchers Join in Now!\n防疫行动紧急会议 已召开, 各位研究家们赶快进入会议\n\nhttps://us02web.zoom.us/j/7693395809',
                     url: 'https://us02web.zoom.us/j/7693395809',

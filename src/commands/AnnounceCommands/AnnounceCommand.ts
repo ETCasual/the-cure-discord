@@ -52,7 +52,7 @@ export const run: RunFunction = async (client, message, args) => {
 			break;
 		case 'zoom':
 			if (isOwner()) {
-				await message.channel.send(
+				await announcementChannel.send(
 					'@everyone',
 					client.emptyEmbed({
 						title: 'The Cure Research Emergency Meeting! 🚨',
