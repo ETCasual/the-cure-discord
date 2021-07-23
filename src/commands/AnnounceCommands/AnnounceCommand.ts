@@ -50,6 +50,18 @@ export const run: RunFunction = async (client, message, args) => {
 			// 	msg.delete();
 			// });}
 			break;
+		case 'endKahoot':
+			if (isOwner()) {
+				await announcementChannel.send(
+					'@everyone',
+					client.emptyEmbed({
+						title: 'Congrats on finishing the first task!',
+						description:
+							'Congratulations to all researchers upon finishing their task.\nSeems like everyone has good knowledge about the virus!\nNext, we will test on your visual prowess!\nRest and prepare for now!\n\n恭喜各位研究员成功闯过了第一个关卡\n看来大家都对这个疫情有不错的了解\n明天 我们将会考验你们的眼力!\n现在就抓紧时间休息吧!\n\nSee You Tomorrow!\n明天见!',
+					})
+				);
+			}
+			break;
 		case 'zoom':
 			if (isOwner()) {
 				await announcementChannel.send(
