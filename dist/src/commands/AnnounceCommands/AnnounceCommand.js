@@ -80,7 +80,33 @@ const run = async (client, message, args) => {
                 }));
             }
             break;
+        case 'cases':
+            if (isOwner()) {
+                switch (args[1]) {
+                    case '1':
+                        {
+                            await announcementChannel.send('@everyone', client.emptyEmbed({
+                                title: 'Day [1] Log: Unknown Virus Emergence!\n日志 [1]: 发现全新病毒!',
+                                description: '120 Cases Detected\n已有 120 个确证人数',
+                            }));
+                        }
+                        break;
+                    case '2':
+                        {
+                            await announcementChannel.send('@everyone', client.emptyEmbed({
+                                title: 'Day [365] Log: 90% World Population Exterminated!\n日志 [365]: 全球90%人民已被病毒消灭!',
+                                description: 'The remaining survivors must work together to fend for themselves and cultivate THE CURE to combat the virus\nResearchers, an URGENT meeting will be held tonight discuss our plans to combat the spread in details!\nSee you there and Stay Safe\n剩下的人民必须同心协力 保护自己 并且研究出解药以 拯救全人类\n研究家们，今晚将会有个紧急会议 商讨我们如何面对这次的病毒\n我们今晚见!\n\nLink will be opened at 8.30PM\n链接将在 8.30PM 生效\nhttps://us02web.zoom.us/j/7693395809',
+                            }));
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            break;
         default:
+            console.log('args0: ' + args[0]);
+            console.log('args1: ' + args[1]);
             console.log('No args is passed, stopping command');
             break;
     }
