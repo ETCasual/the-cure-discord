@@ -62,7 +62,7 @@ const run = async (client, message, args) => {
             if (isOwner()) {
                 await announcementChannel.send('@everyone', client.emptyEmbed({
                     title: '[MUTATION EVENT] Lambda!',
-                    image: {
+                    thumbnail: {
                         url: 'https://img.poki.com/cdn-cgi/image/quality=78,width=600,height=600,fit=cover,g=0.5x0.5,f=auto/f4b3ac7fe25cad9bc028b33f7a407f28.png',
                     },
                     description: "Theres a new variant of the virus, called Lambda!\nIt is known for its immune evasion\nEvading immune systems renders the body into a weaker state!\nWe must **RACE** against time to defeat the variant!\n\n病毒变异了! 被赋予了 Lambda之名!\n此病毒特征是回避身体的免疫系统\n导致身体进入了虚弱的状态!\n研究员们必须立刻与时间 **赛跑** 以打败变异的病毒!\n\n1. Researchers must download **Temple Run**\n2. Each research team must accumulate more than **20,000 meters** in distance\n3. Screenshot your results with the distance visible and submit to your group's submission channel\n4. Only a maximum of 6 images allowed for submission!\n\n1. 研究员们必须下载 **Temple Run**\n2. 并且每研究团队需在游戏里获得不少于 **20,000米** 的距离\n3. 截图游戏的结果并确保距离数额需清楚可见\n4. 最多只允许 6 张图片作呈交",
@@ -73,6 +73,11 @@ const run = async (client, message, args) => {
             if (isOwner()) {
                 await announcementChannel.send('@everyone', client.emptyEmbed({
                     title: '[MUTATION EVENT] Delta!',
+                    thumbnail: {
+                        height: 150,
+                        width: 150,
+                        url: 'https://play-lh.googleusercontent.com/HvcVIhfvIqWsobFVDbz6sxgh0sNXVYKGwjvq5uGiDaCyPi7hOSjqvQaWQbs793HvTyEf',
+                    },
                     description: "With it's increased transmission rate,\nThe Delta variant is dangerously infectous to people\nWe must study its transmission rate and discover how to stop it!\n\n透过高度的散播率,\n变异病毒 Delta 已成为了现在传染性最强的病毒\n我们需要研究此变异病毒的感染率以了解如何击破它!\n\n1. Researchers must find a form of **Crowd City** game\n2. Each research team must accumulate more than **3000** in score\n3. Screenshot your results and submit them in your group's submission channel\n4. Only a maximum of 6 images allowed for submission!\n\n1. 研究员们必须玩一款 **Crowd City** 游戏\n2. 并且每研究团队需在游戏里获得不少于 **3000** 分\n3. 截图游戏的结果并确保距离数额需清楚可见\n4. 最多只允许 6 张图片作呈交",
                 }));
             }
