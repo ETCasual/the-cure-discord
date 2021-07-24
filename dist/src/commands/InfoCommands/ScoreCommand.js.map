@@ -1,0 +1,1 @@
+{"version":3,"file":"ScoreCommand.js","sourceRoot":"","sources":["../../../../src/commands/InfoCommands/ScoreCommand.ts"],"names":[],"mappings":";;;AAEO,MAAM,GAAG,GAAgB,KAAK,EAAE,MAAM,EAAE,OAAO,EAAE,IAAI,EAAE,EAAE;IAC/D,MAAM,OAAO,CAAC,OAAO,CAAC,IAAI;IACzB,eAAe;IACf,MAAM,CAAC,UAAU,CAAC,EAAE,CAAC,CACrB,CAAC;AACH,CAAC,CAAC;AALW,QAAA,GAAG,OAKd;AAEW,QAAA,IAAI,GAAW,OAAO,CAAC"}
