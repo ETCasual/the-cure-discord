@@ -1,8 +1,12 @@
+import { TextChannel } from 'discord.js';
 import { RunFunction } from '../../interfaces/Command';
 
 export const run: RunFunction = async (client, message) => {
-	await message.channel.send(
-		// '@everyone',
+	const announcementChannel = client.channels.cache.get(
+		'863041199090565160'
+	) as TextChannel;
+	await announcementChannel.send(
+		'@everyone',
 		client.emptyEmbed({
 			title: 'Top 3',
 			description: 'As of findme.\n只到 findme 环节',

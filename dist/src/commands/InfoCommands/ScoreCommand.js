@@ -2,9 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.name = exports.run = void 0;
 const run = async (client, message) => {
-    await message.channel.send(
-    // '@everyone',
-    client.emptyEmbed({
+    const announcementChannel = client.channels.cache.get('863041199090565160');
+    await announcementChannel.send('@everyone', client.emptyEmbed({
         title: 'Top 3',
         description: 'As of findme.\n只到 findme 环节',
         image: {
