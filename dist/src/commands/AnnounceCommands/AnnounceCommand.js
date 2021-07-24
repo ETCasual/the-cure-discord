@@ -70,7 +70,7 @@ const run = async (client, message, args) => {
             if (isOwner()) {
                 await announcementChannel.send('@everyone', client.emptyEmbed({
                     title: '[MUTATION EVENT] Delta!',
-                    description: "With it's increased transmission rate,\nThe Delta variant is dangerously infectous to people\nWe must study its transmission rate and discover how to stop it!\n\n透过高度的散播率,\n变异病毒 Delta 已成为了现在传染性最强的病毒\n我们需要研究此变异病毒的感染率以了解如何击破它!\n\n1. Researchers must find a form of **Crowd City** game\n2. Each research team must accumulate more than **500** in score\n3. Screenshot your results and submit them in your group's submission channel\n4. Only a maximum of 6 images allowed for submission!\n\n1. 研究员们必须玩一款 **Crowd City** 游戏\n2. 并且每研究团队需在游戏里获得不少于 **500** 分\n3. 截图游戏的结果并确保距离数额需清楚可见\n4. 最多只允许 6 张图片作呈交",
+                    description: "With it's increased transmission rate,\nThe Delta variant is dangerously infectous to people\nWe must study its transmission rate and discover how to stop it!\n\n透过高度的散播率,\n变异病毒 Delta 已成为了现在传染性最强的病毒\n我们需要研究此变异病毒的感染率以了解如何击破它!\n\n1. Researchers must find a form of **Crowd City** game\n2. Each research team must accumulate more than **3000** in score\n3. Screenshot your results and submit them in your group's submission channel\n4. Only a maximum of 6 images allowed for submission!\n\n1. 研究员们必须玩一款 **Crowd City** 游戏\n2. 并且每研究团队需在游戏里获得不少于 **3000** 分\n3. 截图游戏的结果并确保距离数额需清楚可见\n4. 最多只允许 6 张图片作呈交",
                 }));
             }
             break;
