@@ -50,6 +50,15 @@ const run = async (client, message, args) => {
                 }));
             }
             break;
+        case 'end':
+            if (isOwner()) {
+                await announcementChannel.send('@everyone', client.emptyEmbed({
+                    title: 'Vaccination complete!',
+                    description: '**The Cure Vaccine** has already been completed!\nThe Professor wishes to speak and thank everyone for your hard work!\nWe will be having a get together with all the researchers at **9PM** and announce the winner!\nSee You There!\n\n**防疫行动的疫苗** 已完全研究成功!\n我们的博士想好好的感谢大家的努力与坚持!\n**9PM** 将会有一个小聚会，也将公布我们的赢家!\n待会见!\n\nhttps://us02web.zoom.us/j/7693395809',
+                    url: 'https://us02web.zoom.us/j/7693395809',
+                }));
+            }
+            break;
         case 'endKahoot':
             if (isOwner()) {
                 await announcementChannel.send('@everyone', client.emptyEmbed({
