@@ -41,6 +41,15 @@ const run = async (client, message, args) => {
             // 	msg.delete();
             // });}
             break;
+        case 'decode':
+            if (isOwner()) {
+                await announcementChannel.send('@everyone', client.emptyEmbed({
+                    title: 'Spread the message!',
+                    description: "Thanks to everyone's effort! The vaccine is created!\nHowever, people have not seen to believe in the vaccine as it is new.\nResearchers must work together and use your creativity to spread the news!\nInstructions are given in the link provided! Good luck!\n\n由于大家不眠不休的努力, 我们成功研究出疫苗了!\n但是由于疫苗还新, 人们还对这个疫苗心存怀疑.\n研究员们需要合作地依靠着他们的创意, 去散播这个好消息!\n指示已在网址中给了你们, 加油!\n\n*Hint: Click the Title Text to navigate to website!*\n*温馨提示: 点击此标题以进入网站!*",
+                    url: 'https://thecure-web.vercel.app',
+                }));
+            }
+            break;
         case 'endKahoot':
             if (isOwner()) {
                 await announcementChannel.send('@everyone', client.emptyEmbed({
